@@ -1,42 +1,29 @@
-<header id="masthead" class="site-header outer">
-  <div class="inner">
-    <div class="site-header-inside">
-
-      <div class="site-branding">
-        {{ if .Site.Params.header.logo_img }}
-        <p class="site-logo">
-          <a href='{{ "/" | relURL }}'>
-            <img src="{{ .Site.Params.header.logo_img | relURL }}" alt="Logo" />
-          </a>
-        </p><!-- .site-logo -->
-        {{ end }}
-        {{ if or (eq .Params.layout "landing") (eq .Params.layout "blog") }}
-        <h1 class="site-title"><a href='{{ "/" | relURL }}'>{{ .Site.Params.header.title }}</a></h1>
-        {{ else }}
-        <p class="site-title"><a href='{{ "/" | relURL }}'>{{ .Site.Params.header.title }}</a></p>
-        {{ end }}
-      </div><!-- .site-branding -->
-
-      {{ if and .Site.Params.header.nav_links .Site.Params.header.has_nav }}
-      <nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
-        <div class="site-nav-inside">
-          <button id="menu-close" class="menu-toggle"><span class="screen-reader-text">Open Menu</span><span
-              class="icon-close" aria-hidden="true"></span></button>
-          <ul class="menu">
-            {{ range $action := .Site.Params.header.nav_links }}
-            <li class="menu-item{{ if eq $.URL $action.url }} current-menu-item{{ end }}{{ if $action.primary }} menu-button{{ end }}">
-              <a href="{{ $action.url | relURL }}"
-                 {{ if $action.new_window }}target="_blank" rel="noopener"{{ end }}
-                 {{ if $action.primary }}class="button"{{ end }}>{{ $action.label }}</a>
-            </li>
-            {{ end }}
-          </ul><!-- .menu -->
-        </div><!-- .site-nav-inside -->
-      </nav><!-- .site-navigation -->
-      <button id="menu-open" class="menu-toggle"><span class="screen-reader-text">Close Menu</span><span class="icon-menu"
-          aria-hidden="true"></span></button>
-      {{ end }}
-
-    </div><!-- .site-header-inside -->
-  </div><!-- .inner -->
-</header><!-- .site-header -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='shortcut icon' type='image/x-icon' href='/images/icons/favicon.ico' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" data-api-key="YOUR_PUBLIC_API_KEY" id="snipcart"></script>
+  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
+  {{ $style := resources.Get "scss/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  <title>CheeseCity</title>
+</head>
+<body>
+  <header class="header">
+    <a class="header__branding" href="/">
+      <img class="header__logo" src="/images/icons/cheese.svg" alt="cheese logo"> 
+      <h1 class="header__title">CheeseCity</h1>
+    </a>
+    <div class="header__cart">
+      <a href="#" class="snipcart-checkout" style="text-decoration: none;">
+        <div class="snipcart-summary">
+          <img src="/images/icons/cart.svg" alt="">
+          <span class="snipcart-total-price"></span>
+        </div>
+      </a>
+    </div>
+  </header>

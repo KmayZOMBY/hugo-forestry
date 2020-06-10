@@ -1,0 +1,20 @@
+[
+    {
+      "id": "PR_STICK",
+      "name": "Perspi-Rock Stick 60g",
+      "price": 4.50,
+      "image": "",
+      "description": "100% Natural Deodorant",
+      "product_url": "http://snipcart-hugo-forestery.netlify.com"
+    },
+
+    {
+        "id": "PR_ROLL",
+        "name": "Perspi-Rock Roll-On 50ml",
+        "price": 4.99,
+        "image": "",
+        "description": "100% Natural Roll-On Deodorant",
+        "product_url": "http://snipcart-hugo-forestery.netlify.com"
+      }
+     
+  ]
